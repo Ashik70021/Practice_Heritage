@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const PropertyCardSection = () => {
     const [properties, setProperties] = useState([])
@@ -18,6 +19,7 @@ const PropertyCardSection = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3">
                     {properties.map((property) => (
                         <div key={property.id} className="mt-4 flex-shrink-0 w-full px-4">
+                            <Link to={`/propertydetails/${property.id}`}>
                                 <div className="bg-[#F9FAFB] rounded-lg shadow-lg overflow-hidden">
                                     <div className="relative">
                                         <img src={property.images[0]} alt={property.name} className="w-full h-52 object-cover" />
@@ -38,7 +40,8 @@ const PropertyCardSection = () => {
                                         <p className="text-gray-600 text-lg font-normal">{property.location}</p>
                                         <p className="mt-4 text-[#111827] text-2xl font-semibold">{property.amount}</p>
                                     </div>
-                                </div>    
+                                </div>
+                            </Link>
                         </div>
                     ))}
                 </div>
